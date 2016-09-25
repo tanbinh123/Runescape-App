@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tjwhalen.game.service.dao.PriceDataMapper">
+
+	<resultMap id="result" type="com.tjwhalen.game.service.model.PriceData">
+		<constructor>
+			<idArg column="ge_item_list_id" 		javaType="Integer"/>
+			<idArg column="price_data_time_id" 		javaType="Integer"/>
+			<arg   column="overall_price"			javaType="Integer"/>
+			<arg   column="buying_price"			javaType="Integer"/>
+			<arg   column="buying_quantity"			javaType="Integer"/>
+			<arg   column="selling_price"			javaType="Integer"/>
+			<arg   column="selling_quantity"		javaType="Integer"/>		
+		</constructor>
+	</resultMap>
+
+	<insert id="insertPrice" parameterType="com.tjwhalen.game.service.model.PriceData">
+		INSERT INTO price_data_snapshots VALUES
+		(${geItemListId}, ${priceDataTimeId}, ${overall}, ${buying}, ${buyingQuantity}, ${selling}, ${sellingQuantity})
+	</insert>
+	
+	<select id="selectPrices" resultMap="result">
+		SELECT *
+		FROM price_data_snapshots	
+	</select>
+	
+	<select id="selectPricesWithPriceDataTimeId" resultMap="result">
+		SELECT *
+		FROM price_data_snapshots 
+		WHERE price_data_time_id = #{param1}
+	</select>
+
+</mapper>

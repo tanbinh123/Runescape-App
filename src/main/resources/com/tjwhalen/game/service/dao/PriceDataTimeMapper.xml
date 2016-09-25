@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.tjwhalen.game.service.dao.PriceDataTimeMapper">
+
+	<resultMap id="result" type="com.tjwhalen.game.service.model.PriceDataTime">
+		<constructor>
+			<idArg column="id" 						javaType="Integer" />
+			<arg column="market_capture_time" 		javaType="java.sql.Timestamp" />
+		</constructor>
+	</resultMap>
+
+	<insert id="insertTime" parameterType="com.tjwhalen.game.service.model.PriceDataTime">
+		INSERT INTO price_data_time (market_capture_time)
+		VALUES (#{marketCaptureTime})
+			
+	</insert>
+
+	<select id="selectTimes" resultMap="result">
+		SELECT *
+		FROM price_data_time
+	</select>
+
+</mapper>

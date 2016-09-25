@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.tjwhalen.game.service.dao.ItemSummaryMapper">
+
+	<resultMap id="result" type="com.tjwhalen.game.service.model.ItemSummary">
+		<constructor>
+			<idArg column="id" 			javaType="int"/>
+			<arg column="name" 			javaType="String"/>
+			<arg column="members" 		javaType="boolean"/>			
+		</constructor>
+		
+	</resultMap>
+
+	<insert id="insertItemSummary" parameterType="com.tjwhalen.game.service.model.ItemSummary">
+		INSERT INTO ge_item_list VALUES
+		(#{id}, #{name}, #{members})	
+	</insert>
+	
+	<select id="selectItemSummarys" resultMap="result">
+		SELECT * 
+		FROM ge_item_list
+	</select>
+	
+	<select id="selectItemSummaryWithId" resultMap="result">
+		SELECT *
+		FROM ge_item_list
+		WHERE id = #{param1}
+	</select>
+
+</mapper>

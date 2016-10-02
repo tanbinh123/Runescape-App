@@ -3,7 +3,7 @@ spring:
     #driverClassName: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5433/runescape_application
     username: postgres
-    password: parkour14
+    password: postgres
     driver-class-name: org.postgresql.Driver
 
 logging:
